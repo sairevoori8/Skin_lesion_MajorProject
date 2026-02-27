@@ -1,0 +1,140 @@
+[
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "send_file",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "SkinLesionModel",
+        "importPath": "model_service",
+        "description": "model_service",
+        "isExtraImport": true,
+        "detail": "model_service",
+        "documentation": {}
+    },
+    {
+        "label": "io",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "io",
+        "description": "io",
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "CORS",
+        "importPath": "flask_cors",
+        "description": "flask_cors",
+        "isExtraImport": true,
+        "detail": "flask_cors",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "cv2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cv2",
+        "description": "cv2",
+        "detail": "cv2",
+        "documentation": {}
+    },
+    {
+        "label": "tensorflow",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "predict",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def predict():\n    if \"image\" not in request.files:\n        return jsonify({\"error\": \"No image file provided\"}), 400\n    image_file = request.files[\"image\"]\n    result = model.predict(image_file)\n    return jsonify(result)\n@app.route(\"/gradcam\", methods=[\"POST\"])\ndef gradcam():\n    if \"image\" not in request.files:\n        return jsonify({\"error\": \"No image file provided\"}), 400",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "gradcam",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def gradcam():\n    if \"image\" not in request.files:\n        return jsonify({\"error\": \"No image file provided\"}), 400\n    image_file = request.files[\"image\"]\n    heatmap_bytes = model.generate_gradcam(image_file)\n    return send_file(\n        io.BytesIO(heatmap_bytes),\n        mimetype=\"image/jpeg\"\n    )\nif __name__ == \"__main__\":",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = Flask(__name__)\nCORS(app)\nmodel = SkinLesionModel(\"model.keras\")\n@app.route(\"/predict\", methods=[\"POST\"])\ndef predict():\n    if \"image\" not in request.files:\n        return jsonify({\"error\": \"No image file provided\"}), 400\n    image_file = request.files[\"image\"]\n    result = model.predict(image_file)\n    return jsonify(result)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "model = SkinLesionModel(\"model.keras\")\n@app.route(\"/predict\", methods=[\"POST\"])\ndef predict():\n    if \"image\" not in request.files:\n        return jsonify({\"error\": \"No image file provided\"}), 400\n    image_file = request.files[\"image\"]\n    result = model.predict(image_file)\n    return jsonify(result)\n@app.route(\"/gradcam\", methods=[\"POST\"])\ndef gradcam():",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "SkinLesionModel",
+        "kind": 6,
+        "importPath": "model_service",
+        "description": "model_service",
+        "peekOfCode": "class SkinLesionModel:\n    def __init__(self, model_path=\"model.keras\"):\n        base_dir = os.path.dirname(os.path.abspath(__file__))\n        full_path = os.path.join(base_dir, model_path)\n        print(\"Loading model from:\", full_path)\n        self.model = tf.keras.models.load_model(full_path)\n        self.last_conv_layer_name = self._find_last_conv_layer()\n        self.img_size = (71, 71)\n        self.class_names = [\"nv\", \"mel\", \"bkl\", \"bcc\", \"akiec\", \"vasc\", \"df\"]\n        print(\"✅ Model Loaded Successfully\")",
+        "detail": "model_service",
+        "documentation": {}
+    }
+]

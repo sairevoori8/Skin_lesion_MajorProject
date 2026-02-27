@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    --background: 210 25% 97%;
+    --foreground: 215 30% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 30% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 30% 12%;
+
+    --primary: 205 75% 48%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 205 50% 94%;
+    --secondary-foreground: 205 75% 35%;
+
+    --muted: 210 25% 93%;
+    --muted-foreground: 215 15% 48%;
+
+    --accent: 160 50% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 22% 88%;
+    --input: 210 22% 88%;
+    --ring: 205 75% 48%;
+
+    --radius: 0.75rem;
+
+    --risk-low: 155 60% 42%;
+    --risk-medium: 35 90% 55%;
+    --risk-high: 0 72% 55%;
+
+    --hero-start: 205 85% 52%;
+    --hero-mid: 195 70% 42%;
+    --hero-end: 165 55% 40%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+@layer utilities {
+  .hero-gradient {
+    background: linear-gradient(135deg, hsl(205 85% 52%), hsl(195 70% 42%), hsl(165 55% 40%));
+  }
+  .hero-gradient-subtle {
+    background: linear-gradient(135deg, hsl(205 85% 52% / 0.06), hsl(165 55% 40% / 0.06));
+  }
+  .glow-blob {
+    filter: blur(80px);
+    opacity: 0.35;
+  }
+}
