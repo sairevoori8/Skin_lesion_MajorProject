@@ -66,15 +66,6 @@ const steps = [
       "Avoid extreme close-ups that distort edges",
     ],
   },
-  {
-    icon: Hand,
-    title: "Use a Stable Position",
-    tips: [
-      "Rest your hand on a stable surface",
-      "Ask someone for help if needed",
-      "Avoid motion blur",
-    ],
-  },
 ];
 
 const CaptureGuide = () => {

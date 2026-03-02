@@ -14,6 +14,9 @@ import ImageUploader from "@/components/ImageUploader";
 import CaptureGuide from "@/components/CaptureGuide";
 import ResultsCard from "@/components/ResultsCard";
 
+//const link ="http://127.0.0.1:5000/predict";
+const link = "http://13.232.242.131/predict";
+
 interface AnalysisResult {
   predicted_class: string;
   confidence: number;
@@ -69,7 +72,7 @@ const Index = () => {
     try {
       const formData = new FormData();
       formData.append("image", file);
-      const res = await fetch("http://13.232.242.131/predict", {
+      const res = await fetch(link, {
         method: "POST",
         body: formData,
       });
@@ -78,7 +81,7 @@ const Index = () => {
       setResult(data);
     } catch {
       setError(
-        "Unable to analyze image. Please ensure the API server is running and try again."
+        "Unable to analyze image."
       );
     } finally {
       setLoading(false);
