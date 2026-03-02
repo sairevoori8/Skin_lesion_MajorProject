@@ -15,7 +15,7 @@ import CaptureGuide from "@/components/CaptureGuide";
 import ResultsCard from "@/components/ResultsCard";
 
 //const link ="http://127.0.0.1:5000/predict";
-const link = "http://13.200.250.83/predict";
+const link = "https://13.200.250.83/predict";
 
 interface AnalysisResult {
   predicted_class: string;
